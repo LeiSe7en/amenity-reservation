@@ -1,0 +1,19 @@
+version: '3.8'
+services:
+  mysqlserver:
+    image: mysql:8.0
+    container_name: amentity-reservation-mysql
+    ports:
+      - "5100:3306" ## 后面的那个是 container里面的port， 前面的是暴露出来的host port
+    environment:
+      - MYSQL_ROOT_PASSWORD=
+      - MYSQL_ALLOW_EMPTY_PASSWORD=true
+      - MYSQL_USER=nelson
+      - MYSQL_PASSWORD=nelson
+      - MYSQL_DATABASE=amentity_reservation
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - mysql_config:/etc/mysql/conf.d
+volumes:
+  mysql_data:
+  mysql_config:
